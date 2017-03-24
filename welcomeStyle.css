@@ -1,0 +1,14 @@
+/*
+center  {
+    background-image: url("foodManager.jpg");
+    background-color: #cccccc;
+}
+*/
+p{
+	text-align: center;
+    margin-left: 170px;
+    font-family: "Times New Roman", Times, serif;
+	font-size: 20px;
+    padding: 1em;
+    overflow: hidden;
+}

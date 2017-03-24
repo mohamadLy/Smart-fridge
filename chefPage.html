@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" href="styles.css">
+ <title>Smart refrigirator</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="center">
+
+	<h1 align="center">Chef options</h1>
+
+	<img src="chef.png" alt="Chef" style="width:304px;height:228px;">
+	<a href="create_meal.php">
+		<button type="button" class="btn">New Meals</button>
+	</a>
+ 	<a href="place_order.php">
+    <button type="button" class="btn">Place Orders</button>
+  </a>
+
+	<button type="button" class="btn">Reports</button>
+</div>
+
+<!--
+<script type="text/javascript">
+  function create_meal() {
+       var xhttp;
+    if (window.XMLHttpRequest) {
+      // code for modern browsers
+      xhttp = new XMLHttpRequest();
+      } else {
+      // code for IE6, IE5
+      xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("demo").innerHTML = this.responseText;
+      }
+    };
+    xhttp.open("GET", "create_meals.php", true);
+    xhttp.send();
+  }
+
+
+</script> -->
+</body>
+</html>
