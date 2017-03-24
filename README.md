@@ -1,2 +1,3 @@
-# Smart-fridge
-# Smart-fridge
+For this project we are require to build a simplified smart refrigerator using postGresql database server. Smart refrigerator is composed of 3 main actors such as regular user ( people who will be using the refrigerator as customers to get food out of refrigerator, a chefs (people who can add new meals, get order from customers as well as send order to the administrator when the fridge is missing ingredients) and administrator (people who are managing orders that comes from the chiefs, replacing missing items, he/she can also see the most requested meals, most used items, most expensive items .
+  
+The refrigerator is programmed to sense what kinds of products is stored inside the refrigerator and will notify the user when foods are out of stock as well as prepare a report for the administrator. In more specific, a regular user can get the foods from the refrigerator by requesting the food name or its category or even request a meal. On the other hand, the chef can enter different type of meals and the ingredients, place an order, and see a report, where the administrator can maintain the stock and place the orders.
