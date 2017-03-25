@@ -33,11 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   // Connecting, selecting database
-$dbconn = pg_connect("host=web0.site.uottawa.ca port=15432 dbname=username user=username password=password") or die('Could not connect: ' . pg_last_error());
-//Query database
+  $dbconn = pg_connect("host=web0.site.uottawa.ca port=15432 dbname=".$_SESSION['username']." user=".$_SESSION['username']." password=".$_SESSION['password'])
+  or die('Could not connect: ' . pg_last_error());
+
 $query="INSERT INTO db_smart_fridge.orders(reg_id, order_date) VALUES('$reg_id', '$order_date')";
 
 //$stmt=pg_prepare($dbconn, "ps", $query);
+$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 $result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
 // Closing connection

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
  <!DOCTYPE html>
 <html>
 <head>
@@ -5,30 +6,7 @@
  <link rel="stylesheet" href="usersPage.css">
  <title>Smart refrigirator</title>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<style>
-#select_category {
-  width: 60%;
-  float: left;
-  font-size: 24px;
-  text-align: center;
-  cursor: pointer;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
-}
-#dropdown {
-  width:50%;
-    float:left;
-}
-#choice_made {
-  width: 25%;
-  float: left;
 
-}
-</style>
 <script type="text/javascript">
   function display() {
        var xhttp;
@@ -73,7 +51,6 @@ function myFunction() {
     var x = document.getElementById("choice");
     var i = x.selectedIndex;
     document.getElementById("demo").innerHTML = x.options[i].text;
-    $_SESSION["category_selected"] = x.option[i].text;
 }
 </script>
 </head>
@@ -89,7 +66,8 @@ function myFunction() {
 </div>
 
 <div class="dropdown">
-  <select name="choice_made" id="choice" onchange="myFunction()">
+  <form action="" method="GET">
+  <select name="choice_made" id="choice">
   <option value="">Select food by category:</option>
   <option value="Grain">Grain</option>
   <option value="Dairy">Dairy</option>
@@ -98,43 +76,23 @@ function myFunction() {
   <option value="Juice">Juice</option>
   <option value="Egg">Egg</option>
   </select>
-  <button type="button" value="" id="select_category" class="" onclick="display_category()">Select</button>
+  <input type="submit" value="Select" id="select_category" class="">
+</form>
 </div>
 <button type="button" value="" class="btn" onclick="display()" id="request_meal">Request Meal</button>
 
  </div>
 
-
 <p id="demo"></p>
 
 <?php
-if(isset($_POST['submit'])){
-$selected_val = $_POST['Color'];  // Storing Selected Value In Variable
-echo "You have selected :" .$selected_val;  // Displaying Selected Value
-}
+  if(isset($_GET['choice_made']) )
+  {
+    $_SESSION["choice_made"]=$_GET['choice_made'];
+    echo $_SESSION['choice_made'];
+    echo "<script type=\"text/javascript\">display_category()</script>";
+  }
 ?>
- <?php
- echo dhad
-   if (isset($_POST['choice_made']) && !empty($_POST["choice_made"])) {
-     if (true) {
-       echo choice_made;
-       // Connecting, selecting database
-       $dbconn = pg_connect("host=web0.site.uottawa.ca port=15432 dbname=mly083 user=mly083 password=FONdou@12") or die('Could not connect: ' . pg_last_error());
-       //Query database
-       $query="SELECT * FROM db_smart_fridge.meal";
-
-
-       $stmt=pg_prepare($dbconn, "ps", $query);
-       $result = pg_query($query) or die('Query failed: ' . pg_last_error());
-
-       echo "somethi
-
-
-     }
-   }
-
- ?>
-
 
 </body>
 </html>

@@ -30,9 +30,35 @@
   transform: translateY(4px);
 }
 
+#select_category {
+  width: 60%;
+  float: left;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+#select_category:hover {background-color: #3e8e41}
 
+#select_category:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#dropdown {
+  width:50%;
+    float:left;
+}
+#choice_made {
+  width: 25%;
+  float: left;
 
-
+}
 
 
 /*

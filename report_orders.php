@@ -27,7 +27,7 @@ th {text-align: left;}
 $dbconn = pg_connect("host=web0.site.uottawa.ca port=15432 dbname=".$_SESSION['username']." user=".$_SESSION['username']." password=".$_SESSION['password'])
 or die('Could not connect: ' . pg_last_error());
 //Query database
-$query="SELECT * FROM db_smart_fridge.meal";
+$query="SELECT * FROM db_smart_fridge.orders";
 
 
 $stmt=pg_prepare($dbconn, "ps", $query);
@@ -35,31 +35,17 @@ $result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
 echo "<table>
 <tr>
-<th>cuisine</th>
-<th>meal_id</th>
-<th>fridge_id</th>
-<th>description</th>
-<th>price</th>
-<th>meal_name</th>
+<th>Order Number</th>
+<th>Order Date</th>
+<th>Order state</th>
 <th>Action</th>
 </tr>";
 while($row = $line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
     echo "<tr>";
-    echo "<td>" . $row['cuisine'] . "</td>";
-    echo "<td>" . $row['meal_id'] . "</td>";
+    echo "<td>" . $row['order_id'] . "</td>";
+    echo "<td>" . $row['order_date'] . "</td>";
     echo "<td>" . $row['fridge_id'] . "</td>";
-    echo "<td>" . $row['description'] . "</td>";
-    echo "<td>" . $row['price'] . "</td>";
-    echo "<td>" . $row['meal_name'] . "</td>";
-    $_SESSION["cuisine"] = $row['cuisine'];
-    $_SESSION["meal_id"] = $row['meal_id'];
-    $_SESSION["fridge_id"] = $row['fridge_id'];
-    $_SESSION["description"] = $row['description'];
-    $_SESSION["price"] = $row['price'];
-    $_SESSION["meal_name"] = $row['meal_name'];
-
-    echo "<td><a href='place_order.php'><button type='button' name='order_button' value=''>Place Order</button></a></td>";
-
+    echo "<td><a href='place_order.php'><button type='button' name='order_button' value=''>Approve Order</button></a></td>";
     echo "</tr>";
 }
 echo "</table>";

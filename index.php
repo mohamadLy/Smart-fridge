@@ -1,3 +1,4 @@
+<?php session_start(); ?>
  <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@ about their products and consumption history.<br>
 </p>
 
 <img src="foodManager.jpg" alt="Chef" style="width:304px;height:228px;" align="middle">
-<a href="usersPage.html">
+<a href="users_page.php">
  <button type="button" class="btn" >login as Customer</button>
  </a>
  <a href="chefPage.html">
@@ -34,9 +35,13 @@ about their products and consumption history.<br>
   </a>
  </article>
 
- <!--
- <a href="https://www.w3schools.com"></a>
- -->
+ <?php
+ if ($_SERVER["REQUEST_METHOD"] == "POST") {
+   $_SESSION["username"] = $_POST["iuser"];
+   //echo $_SESSION["username"];
+   $_SESSION["password"] = $_POST["ipass"];
+ }
+?>
  </div>
 </body>
 </html>
