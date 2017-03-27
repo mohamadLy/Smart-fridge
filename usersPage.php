@@ -96,7 +96,8 @@ echo dhad
     if (true) {
       echo choice_made;
       // Connecting, selecting database
-      $dbconn = pg_connect("host=web0.site.uottawa.ca port=15432 dbname=mly083 user=mly083 password=FONdou@12") or die('Could not connect: ' . pg_last_error());
+      $dbconn = pg_connect("host=web0.site.uottawa.ca port=15432 dbname=".$_SESSION['username']." user=".$_SESSION['username']." password=".$_SESSION['password'])
+      or die('Could not connect: ' . pg_last_error());
       //Query database
       $query="SELECT * FROM db_smart_fridge.meal";
 
