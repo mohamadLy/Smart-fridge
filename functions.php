@@ -1,6 +1,6 @@
 <?php 
 function confirm($result){
-    global $connection;
+   
 	if(!$result) {
 		die("Query FAILED " . pg_last_error());
 	}  
