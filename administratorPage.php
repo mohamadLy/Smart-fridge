@@ -59,15 +59,16 @@ session_start();
 <h1 align="center">Administrator options</h1>
 
 <img src="administrator.png" align="middle" alt="Chef" style="width:304px;height:228px;">
+<a href="add_ingredient.php">
  <button type="button" class="btn">Place Orders</button>
+</a>
  <button type="button" class="btn" onclick="display()" id="reportButton">Reports</button>
  </div>
  <p id="demo"></p>
  <?php
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
      $order_id = $_POST['varname'];
-     //$where_clause= "WHERE order_id=".$order_id;
-     //echo $where_clause;
+    
      $_SESSION['order_id']=$order_id;
      echo "<script>approved()</script>";
    }
