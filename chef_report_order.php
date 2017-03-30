@@ -20,18 +20,13 @@ th {text-align: left;}
 </style>
 </head>
 <body>
-  <script>
-   function test() {
-     alert();
-   }
-  </script>
 <?php
 
 // Connecting, selecting database
 $dbconn = pg_connect("host=web0.site.uottawa.ca port=15432 dbname=".$_SESSION['username']." user=".$_SESSION['username']." password=".$_SESSION['password'])
 or die('Could not connect: ' . pg_last_error());
 //Query database
-$query="SELECT O.*, fname, lname FROM db_smart_fridge.orders AS O, db_smart_fridge.regular_user AS R, db_smart_fridge.users AS U WHERE O.reg_id=R.reg_id AND R.user_id=U.user_id";
+$query="SELECT * FROM db_smart_fridge." .$_SESSION['chef_view'];
 
 
 $stmt=pg_prepare($dbconn, "ps", $query);
@@ -44,7 +39,6 @@ echo "<table>
 <th>Client First Name</th>
 <th>Client Last Name</th>
 <th>Order state</th>
-<th>Action</th>
 </tr>";
 
 while($row = $line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
@@ -54,7 +48,6 @@ while($row = $line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
     echo "<td>" . $row['fname'] . "</td>";
     echo "<td>" . $row['lname'] . "</td>";
     echo "<td>" . $row['order_state'] . "</td>";
-    echo '<td><form action="administratorPage.php" method="POST"><input type="hidden" name="varname" value='.$row['order_id'].'><input type="submit" value="Approve order"></form></tr>';
 
 }
 echo "</table>";

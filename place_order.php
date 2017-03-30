@@ -23,13 +23,14 @@ h2 {
 <?php
 // define variables and set to empty values
 $reg_idErr = $order_dateErr = "";
-$reg_id = $order_date = "";
+$reg_id = $order_date = $chef_id = "" ;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["reg_id"])) {
     $reg_idErr = "regular user ID is required";
   } else {
 	 $reg_id = test_input($_POST["reg_id"]);
+   $chef_id = test_input($_POST["chef_id"]);
     // check if name only contains letters and whitespace
     if (!preg_match("/^[0-9]*$/",$price)) {
       $reg_idErr = "Only numbers allowed";
@@ -45,15 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $dbconn = pg_connect("host=web0.site.uottawa.ca port=15432 dbname=".$_SESSION['username']." user=".$_SESSION['username']." password=".$_SESSION['password'])
   or die('Could not connect: ' . pg_last_error());
 
-$select = pg_query("SELECT R.reg_id FROM  project.regular_user as R WHERE R.reg_id = '{$reg_id}' ");
-confirm($select);
- if(pg_num_rows($select) == 0){
-               
-               set_message("ID not present in our database. You can create one here");
-              header("place_order.php");
-
-          }  else{     
-$query="INSERT INTO project.orders(reg_id, order_date) VALUES('$reg_id', '$order_date')";
 
 //$stmt=pg_prepare($dbconn, "ps", $query);
 $result = pg_query($query) ;
@@ -64,18 +56,10 @@ $result = pg_query($query) ;
    
           
           }
-/*
-$regular_user= pg_query("INSERT INTO project.regular_user(user_id) VALUES('$query_id')");
-    confirm($regular_user);
-   $query_prim=pg_query("SELECT R.reg_id FROM project.regular_user  AS R WHERE R.user_id = '$query_id' ");
-   confirm($query_prim);
-
-
-*/
 
 // Closing connection
 pg_close($dbconn);
-
+echo '<script> alert("Order Successfully")</script>';
 }
 
 function test_input($data) {
@@ -100,6 +84,9 @@ function test_input($data) {
   <input type="text" name="reg_id" value="">
   <span class="error" > <?php echo $reg_idErr;?></span>
   <br>
+  Chef ID:<br>
+  <input type="text" name="chef_id" value="">
+  <br>
   Order date:<br>
   <input type="date" name="order_date" value="">
   <span class="error" > <?php echo $order_dateErr;?></span>
@@ -108,21 +95,3 @@ function test_input($data) {
   <input type="submit" name="submit" value="create Order">
 </form>
 
-
-<p>If you click the "create Meal" button, a meal will be added on the meal database.</p>
-</div>
- </article>
-
-<?php //echo $_SESSION["meal_name"]; ?>
-
-<script>
-function myFunction() {
-    var person = prompt("Please enter your name", "Harry Potter");
-
-    if (person != null) {
-        document.getElementById("demo").innerHTML =
-        "Hello " + person + "! How are you today?";
-    }
-}
-</script>
-<?php include("footer.php");?>

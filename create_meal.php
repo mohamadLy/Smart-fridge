@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,16 +61,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   // Connecting, selecting database
-$dbconn = pg_connect("host=web0.site.uottawa.ca port=15432 dbname=username user=username password=password") or die('Could not connect: ' . pg_last_error());
-//Query database
+  $dbconn = pg_connect("host=web0.site.uottawa.ca port=15432 dbname=".$_SESSION['username']." user=".$_SESSION['username']." password=".$_SESSION['password'])
+  or die('Could not connect: ' . pg_last_error());
 $query="INSERT INTO db_smart_fridge.meal(cuisine, fridge_id, description, price, meal_name) VALUES('$cuisine', '$fridge_number', '$description', '$price', '$meal_name')";
 
 //$stmt=pg_prepare($dbconn, "ps", $query);
 $result = pg_query($query) or die('Query failed: ' . pg_last_error());
-  //header("http://localhost/smart_refrigerator/chefPage.html")
-  //exit();
+
 // Closing connection
 pg_close($dbconn);
+
+echo '<script>alert("Meal Created Successfully")</script>';
 
 }
 

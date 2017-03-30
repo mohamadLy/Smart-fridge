@@ -45,28 +45,18 @@
    xhttp.send();
  }
 </script>
-<script>
-function myFunction() {
-   var x = document.getElementById("choice");
-   var i = x.selectedIndex;
-   document.getElementById("demo").innerHTML = x.options[i].text;
-   $_SESSION["category_selected"] = x.option[i].text;
-}
-</script>
 </head>
 <body>
 
 <div class="center">
 <h1 align="center">Users options</h1>
-<p>
 
-</p>
 <div class="image_meal">
 <img src="customerOrderingFood.jpeg" alt="custumer ordering food" style="width:304px;height:228px;" >
 </div>
 
 <div class="dropdown">
- <select name="choice_made" id="choice" onchange="myFunction()">
+ <select name="choice_made" id="choice">
  <option value="">Select food by category:</option>
  <option value="Grain">Grain</option>
  <option value="Dairy">Dairy</option>
@@ -81,36 +71,7 @@ function myFunction() {
 
 </div>
 
-<?php echo $_SESSION["username"] ?>
 <p id="demo"></p>
-
-<?php
-if(isset($_POST['submit'])){
-$selected_val = $_POST['Color'];  // Storing Selected Value In Variable
-echo "You have selected :" .$selected_val;  // Displaying Selected Value
-}
-?>
-<?php
-echo dhad
-  if (isset($_POST['choice_made']) && !empty($_POST["choice_made"])) {
-    if (true) {
-      echo choice_made;
-      // Connecting, selecting database
-      $dbconn = pg_connect("host=web0.site.uottawa.ca port=15432 dbname=mly083 user=mly083 password=FONdou@12") or die('Could not connect: ' . pg_last_error());
-      //Query database
-      $query="SELECT * FROM db_smart_fridge.meal";
-
-
-      $stmt=pg_prepare($dbconn, "ps", $query);
-      $result = pg_query($query) or die('Query failed: ' . pg_last_error());
-
-      echo "somethi
-
-
-    }
-  }
-
-?>
 
 
 </body>
