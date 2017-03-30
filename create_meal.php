@@ -66,10 +66,11 @@ $query="INSERT INTO db_smart_fridge.meal(cuisine, fridge_id, description, price,
 
 //$stmt=pg_prepare($dbconn, "ps", $query);
 $result = pg_query($query) or die('Query failed: ' . pg_last_error());
-  //header("http://localhost/smart_refrigerator/chefPage.html")
-  //exit();
+
 // Closing connection
 pg_close($dbconn);
+
+echo '<script>alert("Meal Created Successfully")</script>';
 
 }
 

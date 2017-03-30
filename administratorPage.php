@@ -7,6 +7,12 @@ session_start();
 <head>
  <link rel="stylesheet" href="styles.css">
  <title>Smart refrigirator</title>
+ <style>
+  button {
+    float: right;
+    margin: 50px;
+  }
+  </style>
 </head>
 <body>
   <script type="text/javascript">
@@ -45,6 +51,7 @@ session_start();
       };
       xhttp.open("GET", "approve_order.php", true);
       xhttp.send();
+      alert("Order approve!!")
     }
   </script>
 <div class="center">
@@ -53,14 +60,15 @@ session_start();
 
 <img src="administrator.png" align="middle" alt="Chef" style="width:304px;height:228px;">
  <button type="button" class="btn">Place Orders</button>
- <button type="button" class="btn">Approve Orders</button>
- <button type="button" class="btn" onclick="display()">Reports</button>
+ <button type="button" class="btn" onclick="display()" id="reportButton">Reports</button>
  </div>
  <p id="demo"></p>
  <?php
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-     $where_clause= "WHERE order_id=".$_SESSION['order_id'];
-     echo $where_clause;
+     $order_id = $_POST['varname'];
+     //$where_clause= "WHERE order_id=".$order_id;
+     //echo $where_clause;
+     $_SESSION['order_id']=$order_id;
      echo "<script>approved()</script>";
    }
  ?>

@@ -30,7 +30,7 @@ about their products and consumption history.<br>
  <a href="chefPage.html">
  <button type="button" class="btn">login as Chef</button>
   </a>
- <a href="administratorPage.html">
+ <a href="administratorPage.php">
  <button type="button" class="btn">login as Administrator</button>
   </a>
  </article>
