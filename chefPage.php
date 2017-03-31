@@ -13,7 +13,7 @@
     $id = $_POST["id"];
     if ($id == 1) {
       $_SESSION["chef_view"] = "chef1";
-      echo "SELECT * FROM " .$_SESSION['chef_view'];
+      //echo "SELECT * FROM " .$_SESSION['chef_view'];
     } elseif ($id == 2) {
       $_SESSION["chef_view"] = "chef2";
     }

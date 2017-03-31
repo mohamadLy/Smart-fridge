@@ -1,4 +1,4 @@
-<?php 
+<?php
 ob_start();
 session_start();
 include("functions.php");
@@ -16,46 +16,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 } else {
                $last_n = test_input($_POST["lname"]);
                 }
-              
-              
+
+
 
   // Connecting, selecting database
           $dbconn = pg_connect("host=web0.site.uottawa.ca port=15432 dbname=".$_SESSION['username']." user=".$_SESSION['username']." password=".$_SESSION['password'])
           or die('Could not connect: ' . pg_last_error());
-
-       $query=pg_query("INSERT into project.users (fname,lname) values ('$first_n','$last_n') ");
+          echo "string";
+       $query=pg_query("INSERT INTO db_smart_fridge.users (fname,lname) VALUES ($first_n,$last_n))";
        confirm($query);
-    //set_message("User added successfully");
-    // $query_id=pg_query("SELECT U.user_id FROM project.users AS U WHERE U.fname= '$first_n' AND U.lname= '$last_n' ");
-    //confirm($query_id);
-   
 
-   //$regular_user= pg_query("INSERT INTO project.regular_user(user_id) VALUES('{$return_fetch}')");
-   // confirm($regular_user);
-   //set_message($row['user_id']);
-
-    $sql=pg_query("INSERT INTO project.regular_user(user_id)
-                    SELECT U.user_id FROM project.users  as U
-                       WHERE  U.fname ='{$first_n}' and U.lname= '$last_n' ");
+       echo "before";
+    $sql=pg_query("INSERT INTO db_smart_fridge.regular_user(user_id)
+                    SELECT U.user_id FROM db_smart_fridge.users  as U
+                       WHERE  U.fname =$first_n AND U.lname=$last_n)";
     confirm($sql);
 
+    echo "after";
 
-    $regular=pg_query("SELECT MAX(R.reg_id) FROM project.regular_user AS R  NATURAL JOIN  project.users");
+    $regular=pg_query("SELECT MAX(R.reg_id) FROM db_smart_fridge.regular_user AS R  NATURAL JOIN  db_smart_fridge.users");
     confirm($regular);
      // $row=pg_fetch_array($regular);
     while($row=pg_fetch_array($regular))
     {
         $return_fetch=$row[0];
-      
+
     }
     //$DELIMETER="New User added. Your regular_id is <br>  $return_fetch"
 
    set_message("New User added. Your regular_id is: " . $return_fetch );
-  
 
 }
-
-
 
 
 function test_input($data) {
@@ -84,7 +75,7 @@ function test_input($data) {
 
 <p><span class="error">All fields are required.</span></p>
 <form class="" action="" method="post" enctype="multipart/form-data">
-               
+
                  <?php // login_user();  ?>
                 <div class="form-group"><label for="">
                     First Name<input type="text" name="fname" class="form-control"></label>
