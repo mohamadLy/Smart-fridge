@@ -72,6 +72,7 @@ $result = pg_query($query) or die('Query failed: ' . pg_last_error());
 pg_close($dbconn);
 
 echo '<script>alert("Meal Created Successfully")</script>';
+header('Refresh: 1;url=chefPage.php');
 
 }
 

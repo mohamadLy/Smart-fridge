@@ -86,7 +86,7 @@ function test_input($data) {
 <article>
 <div class="center" align="center">
 
-<h1 align="center">Creation of a Meal</h1>
+<h1 align="center">Ordering a Meal</h1>
 <h2 align="center"><?php  display_message();?> </h2>
 
 <div class="image_meal">

@@ -55,7 +55,7 @@ function test_input($data) {
 <article>
 <div class="center">
 
-<h1 align="center">Creation of a Meal</h1>
+<h1 align="center">Add Ingredient</h1>
 
 <div class="image_meal">
 <img src="meal.jpg" alt="meal" style="width:304px;height:228px;">

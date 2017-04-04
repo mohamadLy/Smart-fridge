@@ -13,6 +13,7 @@ session_start();
     margin: 50px;
   }
   </style>
+  <?php include 'menu.php' ?>
 </head>
 <body>
   <script type="text/javascript">
@@ -54,7 +55,7 @@ session_start();
       alert("Order approve!!")
     }
   </script>
-<div class="center">
+<div style="margin-left:25%;padding:1px 16px;height:1000px;" class="center">
 
 <h1 align="center">Administrator options</h1>
 
@@ -63,12 +64,13 @@ session_start();
  <button type="button" class="btn">Place Orders</button>
 </a>
  <button type="button" class="btn" onclick="display()" id="reportButton">Reports</button>
+<p id="demo"></p>
  </div>
- <p id="demo"></p>
+
  <?php
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
      $order_id = $_POST['varname'];
-    
+
      $_SESSION['order_id']=$order_id;
      echo "<script>approved()</script>";
    }

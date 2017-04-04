@@ -5,6 +5,7 @@
  <link rel="stylesheet" href="styles.css">
  <title>Smart refrigirator</title>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ <?php include 'menu.php'; ?>
 </head>
 <body>
   <?php
@@ -38,7 +39,7 @@
       xhttp.send();
     }
   </script>
-<div class="center">
+<div style="margin-left:25%;padding:1px 16px;height:1000px;" class="center">
 
 	<h1 align="center">Chef options</h1>
 

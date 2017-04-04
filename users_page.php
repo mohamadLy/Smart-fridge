@@ -53,10 +53,11 @@ function myFunction() {
     document.getElementById("demo").innerHTML = x.options[i].text;
 }
 </script>
+<?php include 'menu.php' ?>
 </head>
 <body>
 
-<div class="center">
+<div style="margin-left:25%;padding:1px 16px;height:1000px;" class="center">
 <h1 align="center">Users options</h1>
 <p>
 
@@ -81,9 +82,8 @@ function myFunction() {
 </div>
 <button type="button" value="" class="btn" onclick="display()" id="request_meal">Request Meal</button>
 
- </div>
-
 <p id="demo"></p>
+ </div>
 
 <?php
   if(isset($_GET['choice_made']) )
